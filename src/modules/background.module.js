@@ -12,6 +12,6 @@ export class BackgroundModule extends Module {
         body.style.backgroundColor = `rgb(${random(0, 255)}, ${random(0, 255)}, ${random(0, 255)})`
         setTimeout(() => {
             body.style.backgroundColor = '#fff'
-        }, 5000)
+        }, 3000)
     }
 }

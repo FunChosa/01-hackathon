@@ -18,17 +18,40 @@ export class RandomNumber extends Module {
     if(!check){
     const mainBlock = this.createNewElement('div', 'randomNumber');
     mainBlock.style.textAlign  = 'center';
+    mainBlock.style.display  = 'inline-block';
+    mainBlock.style.marginTop  = '200px';
+    mainBlock.style.marginLeft  = '300px';
 
     const titleFunction = document.createElement('h1');
     titleFunction.textContent = 'Рандомайзер целыx, положительных чисел';
-    titleFunction.style.color = "#ff1493"
+    titleFunction.style.color = "#052f4d"
     const fromNumber = this.createNewElement('input', 'from');
     fromNumber.setAttribute('placeholder', 'от');
     const toNumber = this.createNewElement('input', 'to');
     toNumber.setAttribute('placeholder', 'до');
+    
+    fromNumber.style.padding = '15px 20px';
+    fromNumber.style.margin = '15px 20px';
+    toNumber.style.padding = '15px 20px';
+    toNumber.style.margin = '15px 20px';
+    fromNumber.style.width = '150px';
+
     const mainButton = this.createNewElement('button', 'mainButton');
+    mainButton.style.borderRadius = "20px";
+
+    mainButton.style.display = 'inline-block'
+    mainButton.style.cursor = 'pointer'
+    mainButton.style.fontSize = '14px'
+    mainButton.style.padding = '15px 20px'
+    fromNumber.style.margin = '15px 20px';
+
+    mainButton.style.color = '#354251';
+    mainButton.style.background = '#ffff0';
+    mainButton.style.border = '1px solid #354251';
+
+
     const resultWindow = this.createNewElement('div', 'result');
-    mainButton.textContent = 'сгенерировать случайное целое число';
+    mainButton.textContent = 'сгенерировать';
 
     mainBlock.append(titleFunction, fromNumber, toNumber, mainButton, resultWindow);
     document.body.append(mainBlock);
@@ -50,13 +73,13 @@ export class RandomNumber extends Module {
     const y = Number(maxNumber.value);
 
         if(isNaN(x) || isNaN(y)){
-            resultRandomValue.textContent = 'Дурак введи число';
+            resultRandomValue.textContent = 'Введенные значения должны быть числами.';
         }else if(x < 0 || y < 0){
-            resultRandomValue.textContent = 'Введите положительные числа';
+            resultRandomValue.textContent = 'Введенные значения должны быть положительными числами.';
         }else if(minNumber.value === "" || maxNumber.value === ""){
-            resultRandomValue.textContent = 'Значени не должны быть пустыми!';
+            resultRandomValue.textContent = 'Введенные значения не должны быть пустыми.';
         }else if(minNumber.value >= maxNumber.value){
-            resultRandomValue.textContent = 'Подумай еще чуть-чуть';
+            resultRandomValue.textContent = 'Первое введенное значение не должно быть больше и равно второго введенному значению.';
         }else{
             resultRandomValue.textContent = random(x, y);
         }})

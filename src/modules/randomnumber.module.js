@@ -14,9 +14,13 @@ export class RandomNumber extends Module {
     }
 
     trigger() {    
-    const check = document.querySelector('.randomNumber');
-    if(!check){
+    const check = document.querySelector('#customBlock');
+    if(check){
+        check.remove();
+    }
+
     const mainBlock = this.createNewElement('div', 'randomNumber');
+    mainBlock.setAttribute('id', 'customBlock');
     mainBlock.style.textAlign  = 'center';
     mainBlock.style.display  = 'inline-block';
     mainBlock.style.marginTop  = '200px';
@@ -83,7 +87,6 @@ export class RandomNumber extends Module {
         }else{
             resultRandomValue.textContent = random(x, y);
         }})
-        }
     }
 }
 

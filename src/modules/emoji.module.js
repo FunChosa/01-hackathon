@@ -1,6 +1,5 @@
 import {Module} from '../core/module'
-import {random} from '../utils';
-import {check} from '../utils';
+import * as HelpUtils from '../utils';
 
 export class EmojiModule extends Module {
     constructor(type, text){
@@ -9,25 +8,18 @@ export class EmojiModule extends Module {
         this.text = text;
     }
     trigger() {
-        check();
-        createEmoji();
-
-        function createEmoji(){
-            const emojiBlock = document.createElement('div');
-            emojiBlock.setAttribute('id', 'customBlock');
-            emojiBlock.classList.add('emoji');
-            emojiBlock.style.fontSize = '300px';
-            emojiBlock.style.marginTop = '10vh';
-
-            emojiBlock.style.textAlign = 'center';
-            emojiBlock.innerHTML = `&#${random(128521, 128591)}`
-            document.body.prepend(emojiBlock);
-
-            document.addEventListener('click', (event) =>{
-                if(event.target === document.body){
-                    emojiBlock.remove()
-                };
-            })
-        }
+        // проверка и удаление существующих элементов на странице
+        HelpUtils.check();
+        // создание html элементов
+        const emojiBlock = HelpUtils.createNewElement('div','emoji');
+        emojiBlock.setAttribute('id', 'customBlock');
+        emojiBlock.style.fontSize = '300px';
+        emojiBlock.style.marginTop = '10vh';
+        emojiBlock.style.textAlign = 'center';
+        // генерирование случайного эмодзи
+        emojiBlock.innerHTML = `&#${HelpUtils.random(128521, 128591)}`;
+        document.body.prepend(emojiBlock);
+        //удаление элемента при клике на свободную область
+        HelpUtils.removeBlock(emojiBlock);  
     }
 }

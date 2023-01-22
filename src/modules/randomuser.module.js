@@ -9,29 +9,26 @@ export class RandomUser extends Module {
     }
     
 	trigger(){
-       HelpUtils.check();
-
+        // проверка и удаление существующих элементов на странице
+        HelpUtils.check();
+        // ассинхронная функция для получения случайного пользователя
         fetchUser(HelpUtils.random(1,10));    
-        
-                async function fetchUser(userNumber) {
-                const USERS_URL = 'https://jsonplaceholder.typicode.com/users';
-                const user = await fetch (`${USERS_URL}/${userNumber}`);
-                const userData = await user.json();
+            async function fetchUser(userNumber) {
+            const USERS_URL = 'https://jsonplaceholder.typicode.com/users';
+            const user = await fetch (`${USERS_URL}/${userNumber}`);
+            const userData = await user.json();
 
-                const randomUserBlock = document.createElement('div');
-                randomUserBlock.classList.add('random-user');
-                randomUserBlock.setAttribute('id', 'customBlock');
-                randomUserBlock.style.fontSize = '30px';
-                randomUserBlock.style.display = 'inline-block';
-                randomUserBlock.style.marginLeft = '400px';
-                randomUserBlock.style.marginTop = '40px';
+            const randomUserBlock = document.createElement('div');
+            randomUserBlock.classList.add('random-user');
+            randomUserBlock.setAttribute('id', 'customBlock');
+            randomUserBlock.style.fontSize = '30px';
+            randomUserBlock.style.display = 'inline-block';
+            randomUserBlock.style.marginLeft = '400px';
+            randomUserBlock.style.marginTop = '40px';
+            randomUserBlock.style.padding = '20px';
+            randomUserBlock.style.border = "3px solid black";
 
-                randomUserBlock.style.padding = '20px';
-                
-                randomUserBlock.style.border = "3px solid black";
-
-                // randomUserBlock.style.marginLeft = '420px';
-                document.body.prepend(randomUserBlock)
+            document.body.prepend(randomUserBlock)
 
                 randomUserBlock.innerHTML = `
                 Name: ${userData.email} <br> <br>
@@ -40,6 +37,7 @@ export class RandomUser extends Module {
                 City: ${userData.address.city} <br> <br>
                 Website: ${userData.website} <br> <br>
                 `
+                //удаление элемента при клике на свободную область
                 HelpUtils.removeBlock(randomUserBlock);
             } 
         }

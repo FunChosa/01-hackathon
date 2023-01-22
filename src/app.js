@@ -5,6 +5,7 @@ import {RandomNumber} from './modules/randomnumber.module';
 import {RandomUser} from './modules/randomuser.module';
 import {BackgroundModule} from './modules/background.module';
 import {TimerModule} from './modules/timer.module';
+import {customUserMessage} from './modules/message.module';
 
 const body = document.querySelector('body');
 const mainMenu = new ContextMenu('ul'); 
@@ -34,8 +35,10 @@ mainMenu.add(TimerModule, {
     text: 'Start timer',
 });
 
-
-
+mainMenu.add(customUserMessage, {
+    type: 'message-module',
+    text: 'Get message',
+});
 
 body.addEventListener('contextmenu', (event) =>  {
     event.preventDefault();

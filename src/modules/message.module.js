@@ -1,4 +1,5 @@
 import {Module} from "@/core/module";
+import * as HelpUtils from '../utils';
 
 export class customUserMessage extends Module{
   constructor(type, text){
@@ -7,6 +8,8 @@ export class customUserMessage extends Module{
     this.text = text;
   }
   trigger() {
+    HelpUtils.check();
+
     const messages = [ // массив фраз
       'London is the capital of Great Britain',
       'Change your mind',
@@ -14,6 +17,10 @@ export class customUserMessage extends Module{
     ]
     const formCustomMessageDrawHTML = () => { // функция отрисовки формы, в которую пользователь вводит своё число
       const customMessagesBlock = document.createElement('div')
+
+      customMessagesBlock.classList.add('customMessage'); //
+      customMessagesBlock.setAttribute('id', 'customBlock')
+
       const customMessagesForm = document.createElement('form')
       customMessagesForm.className = 'custom-messages-block'
       const input = document.createElement('input')
@@ -59,18 +66,23 @@ export class customUserMessage extends Module{
       button.addEventListener('click', (event) => { // если пользователь ввёл правильное число
         event.preventDefault()
         const messageForUser = document.createElement('h2')
+        const mainContainer = document.querySelector('.customMessage');
+
         messageForUser.className = 'message-for-user'
         messageForUser.textContent = messages[valueUserInput - 1]
         setInterval(() => {
           messageForUser.remove()
         }, 3000)
-        document.body.append(messageForUser)
+        mainContainer.append(messageForUser)
         return messageForUser
       })
     }
     formCustomMessageDrawHTML()
     checkHasErrors()
     customMessage()
+
+    const mainContainer = document.querySelector('.customMessage');
+    HelpUtils.removeBlock(mainContainer);
   }
 }
 

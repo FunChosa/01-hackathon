@@ -7,6 +7,7 @@ export class RandomNumber extends Module {
         this.type = type;
         this.text = text;
     }
+    
     createNewElement(type, className){
         const element = document.createElement(type);
         element.className = className;

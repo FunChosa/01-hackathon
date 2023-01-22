@@ -9,15 +9,12 @@ export class RandomUser extends Module {
     }
     
 	trigger(){
-            
         const somethingExist = document.querySelector('#customBlock');
-            if (somethingExist){
-                somethingExist.remove();
-                fetchUser(random(1,10));
-            } else {
-                fetchUser(random(1,10));
-            }
-
+        if(somethingExist){
+            somethingExist.remove();
+        }
+        fetchUser(random(1,10));    
+        
                 async function fetchUser(userNumber) {
                 const USERS_URL = 'https://jsonplaceholder.typicode.com/users';
                 const user = await fetch (`${USERS_URL}/${userNumber}`);

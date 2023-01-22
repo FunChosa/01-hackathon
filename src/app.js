@@ -1,27 +1,26 @@
 import './styles.css'
 import {ContextMenu} from './menu';
-import {BackgroundModule} from './modules/background.module';
-import {ClicksModule} from './modules/clicks.module';
-import {ShapeModule} from './modules/shape.module';
-
+import {EmojiModule} from './modules/emoji.module';
+import {RandomNumber} from './modules/randomnumber.module';
+import {RandomUser} from './modules/randomuser.module';
 
 const body = document.querySelector('body');
 const mainMenu = new ContextMenu('ul'); 
 
 
-mainMenu.add(BackgroundModule, {
-    type: 'background-module',
-    text: 'Поменять цвет',
+mainMenu.add(EmojiModule, {
+    type: 'emoji-module',
+    text: 'Emoji',
 });
 
-mainMenu.add(ClicksModule, {
-    type: 'clicks-module',
-    text: 'Считать клики (за 3 секунд)',
+mainMenu.add(RandomNumber, {
+    type: 'randomnumber-module',
+    text: 'Get number',
 });
 
-mainMenu.add(ShapeModule, {
-    type: 'shape-module',
-    text: 'Создать фигуру',
+mainMenu.add(RandomUser, {
+    type: 'randomuser-module',
+    text: 'Get user',
 });
 
 

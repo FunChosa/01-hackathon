@@ -8,19 +8,15 @@ export class EmojiModule extends Module {
         this.text = text;
     }
     trigger() {
-       
-        const curretnEmoji = document.querySelector('.emoji');
-        //const curretnEmoji = document.querySelector('#customBlock');
-        if (curretnEmoji){
-            curretnEmoji.remove();
-            createEmoji();
-        } else {
-            createEmoji();
+        const somethingExist = document.querySelector('#customBlock');
+        if(somethingExist){
+            somethingExist.remove();
         }
+        createEmoji();
 
         function createEmoji(){
             const emojiBlock = document.createElement('div');
-            emojiBlock.setAttribure('id', 'customBlock');
+            emojiBlock.setAttribute('id', 'customBlock');
             emojiBlock.classList.add('emoji');
             emojiBlock.style.fontSize = '300px';
             emojiBlock.style.marginTop = '10vh';
@@ -29,13 +25,11 @@ export class EmojiModule extends Module {
             emojiBlock.innerHTML = `&#${random(128521, 128591)}`
             document.body.prepend(emojiBlock);
 
-            setTimeout(() => {
-                emojiBlock.remove();
-            }, 5000);
+            document.addEventListener('click', (event) =>{
+                if(event.target === document.body){
+                    emojiBlock.remove()
+                };
+            })
         }
-    }
-     
-    toHTML() {
-       return `<li class="menu-item" data-type="${this.type}">${this.text}</li>`
     }
 }

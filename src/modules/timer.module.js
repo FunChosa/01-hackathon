@@ -19,10 +19,10 @@ export class TimerModule extends Module {
       form.className = 'create-time-block'
       const input = document.createElement('input')
       input.className = 'create-time-block-input'
-      input.placeholder = 'укажите количество секунд'
+      input.placeholder = 'seconds'
       const button = document.createElement('button')
       button.className = 'create-time-block-button'
-      button.textContent = 'Запустить'
+      button.textContent = 'Start'
       document.body.append(container)
       container.append(form)
       form.append(input)
@@ -48,7 +48,7 @@ export class TimerModule extends Module {
           const mainContainer = document.querySelector('.customTimer');
           const errorMessage = document.createElement('span')
           errorMessage.className = 'error-message'
-          errorMessage.textContent = 'Необходимо ввести положительное целое количество секунд'
+          errorMessage.textContent = 'You must enter a positive integer number of seconds'
 
           mainContainer.append(errorMessage)
         }
@@ -73,7 +73,7 @@ export class TimerModule extends Module {
             --valueUserInput
             timerForUser.textContent = valueUserInput
             if (valueUserInput === 0) {
-              timerForUser.textContent = 'Время истекло'
+              timerForUser.textContent = 'Time is up'
               clearInterval(countdown)
             }
           }, 1000)

@@ -12,5 +12,7 @@ Call the **context menu** with the right mouse button to get a menu with modules
 * Emoji Module - generates a random emoji;
 * Random Number - allows you to generate a random positive integer in a given range;
 * Random User - displays the data of a random user from [jsonplaceholder](https://jsonplaceholder.typicode.com);
+* Timer Module - allows to start the timer with the specified time (seconds);
+* Custom User Message - displays custom messsage from array by index; 
 
 `` Jan, 2023 ``

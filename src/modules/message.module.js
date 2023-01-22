@@ -25,10 +25,10 @@ export class customUserMessage extends Module{
       customMessagesForm.className = 'custom-messages-block'
       const input = document.createElement('input')
       input.className = 'custom-messages-block-input'
-      input.placeholder = 'введите число от 1 до 3'
+      input.placeholder = 'enter a number from 1 to 3'
       const button = document.createElement('button')
       button.className = 'custom-messages-block-button'
-      button.textContent = 'Запустить'
+      button.textContent = 'Start'
       document.body.append(customMessagesBlock)
       customMessagesBlock.append(customMessagesForm)
       customMessagesForm.append(input)
@@ -51,7 +51,7 @@ export class customUserMessage extends Module{
         if (!isValid && !errorMessageHTML) { // выдаём ошибку, если надо
           const errorMessage = document.createElement('span')
           errorMessage.className = 'error-message'
-          errorMessage.textContent = 'Необходимо ввести число от 1 до 3'
+          errorMessage.textContent = 'You must enter a number from 1 to 3'
           document.body.append(errorMessage)
         }
         if (isValid) {

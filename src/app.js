@@ -4,6 +4,7 @@ import {EmojiModule} from './modules/emoji.module';
 import {RandomNumber} from './modules/randomnumber.module';
 import {RandomUser} from './modules/randomuser.module';
 import {BackgroundModule} from './modules/background.module';
+import {TimerModule} from './modules/timer.module';
 
 const body = document.querySelector('body');
 const mainMenu = new ContextMenu('ul'); 
@@ -27,6 +28,14 @@ mainMenu.add(RandomUser, {
     type: 'randomuser-module',
     text: 'Get user',
 });
+
+mainMenu.add(TimerModule, {
+    type: 'timer-module',
+    text: 'Start timer',
+});
+
+
+
 
 body.addEventListener('contextmenu', (event) =>  {
     event.preventDefault();

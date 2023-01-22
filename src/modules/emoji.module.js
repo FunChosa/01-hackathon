@@ -8,10 +8,9 @@ export class EmojiModule extends Module {
         this.text = text;
     }
     trigger() {
-  
-        const body = document.querySelector('body');
        
         const curretnEmoji = document.querySelector('.emoji');
+        //const curretnEmoji = document.querySelector('#customBlock');
         if (curretnEmoji){
             curretnEmoji.remove();
             createEmoji();
@@ -21,13 +20,14 @@ export class EmojiModule extends Module {
 
         function createEmoji(){
             const emojiBlock = document.createElement('div');
+            emojiBlock.setAttribure('id', 'customBlock');
             emojiBlock.classList.add('emoji');
             emojiBlock.style.fontSize = '300px';
             emojiBlock.style.marginTop = '10vh';
 
             emojiBlock.style.textAlign = 'center';
             emojiBlock.innerHTML = `&#${random(128521, 128591)}`
-            body.prepend(emojiBlock);
+            document.body.prepend(emojiBlock);
 
             setTimeout(() => {
                 emojiBlock.remove();

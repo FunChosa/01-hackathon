@@ -1,5 +1,6 @@
 import {Module} from '../core/module'
 import {random} from '../utils';
+import {check} from '../utils';
 
 export class EmojiModule extends Module {
     constructor(type, text){
@@ -8,10 +9,7 @@ export class EmojiModule extends Module {
         this.text = text;
     }
     trigger() {
-        const somethingExist = document.querySelector('#customBlock');
-        if(somethingExist){
-            somethingExist.remove();
-        }
+        check();
         createEmoji();
 
         function createEmoji(){

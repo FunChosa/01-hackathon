@@ -1,5 +1,5 @@
 import {Module} from '../core/module';
-import {random} from '../utils';
+import * as HelpUtils from '../utils';
 
 export class RandomNumber extends Module {
     constructor(type, text){
@@ -15,10 +15,7 @@ export class RandomNumber extends Module {
     }
 
     trigger() {    
-    const check = document.querySelector('#customBlock');
-    if(check){
-        check.remove();
-    }
+        HelpUtils.check();
 
     const mainBlock = this.createNewElement('div', 'randomNumber');
     mainBlock.setAttribute('id', 'customBlock');
@@ -64,11 +61,7 @@ export class RandomNumber extends Module {
     const button = document.querySelector('button');
     const resultRandomValue = document.querySelector('.result');
 
-    document.addEventListener('click', (event) =>{
-        if(event.target === document.body){
-            mainBlock.remove()
-        };
-    })
+    HelpUtils.removeBlock(mainBlock);
 
     button.addEventListener('click', () =>{
     const minNumber = document.querySelector('.from');
@@ -86,7 +79,7 @@ export class RandomNumber extends Module {
         }else if(minNumber.value >= maxNumber.value){
             resultRandomValue.textContent = 'Первое введенное значение не должно быть больше и равно второго введенному значению.';
         }else{
-            resultRandomValue.textContent = random(x, y);
+            resultRandomValue.textContent = HelpUtils.random(x, y);
         }})
     }
 }

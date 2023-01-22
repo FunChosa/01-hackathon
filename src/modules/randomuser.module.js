@@ -1,5 +1,5 @@
 import {Module} from '../core/module';
-import {random} from '../utils';
+import * as HelpUtils from '../utils';
 
 export class RandomUser extends Module {
     constructor(type, text){
@@ -9,11 +9,9 @@ export class RandomUser extends Module {
     }
     
 	trigger(){
-        const somethingExist = document.querySelector('#customBlock');
-        if(somethingExist){
-            somethingExist.remove();
-        }
-        fetchUser(random(1,10));    
+       HelpUtils.check();
+
+        fetchUser(HelpUtils.random(1,10));    
         
                 async function fetchUser(userNumber) {
                 const USERS_URL = 'https://jsonplaceholder.typicode.com/users';
@@ -42,11 +40,7 @@ export class RandomUser extends Module {
                 City: ${userData.address.city} <br> <br>
                 Website: ${userData.website} <br> <br>
                 `
-                document.addEventListener('click', (event) =>{
-                    if(event.target === document.body){
-                        randomUserBlock.remove()
-                    };
-                })
+                HelpUtils.removeBlock(randomUserBlock);
             } 
         }
 }
